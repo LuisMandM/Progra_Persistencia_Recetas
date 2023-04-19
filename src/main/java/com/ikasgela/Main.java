@@ -73,9 +73,8 @@ public class Main {
                 if (cantidades_added > 0) System.out.println("CANTIDAD ADDED");
                 else System.out.println("Ha ocurrido un eror intente nuevamente");
                 commit();
-                QuestRecetas();
             }
-
+            QuestRecetas();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -122,7 +121,7 @@ public class Main {
                     actual.addIngredientes(result_ingredientes.getString("NOMBRE"),
                             result_ingredientes.getString("CANTIDAD"));
                 }
-                if (!recetas.contains(actual.getTitulo())) recetas.add(actual);
+                if (!recetas.contains(actual)) recetas.add(actual);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
