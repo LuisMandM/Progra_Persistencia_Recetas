@@ -29,7 +29,7 @@ public class V_AddReceta {
             String nombre = nombre_textField.getText();
             String instrucciones = instrucc_textPane.getText();
             String copia_nombre = nombre.trim().replaceAll(" ", "");
-            if (!copia_nombre.equals("") && !Main.Recetas().contains(nombre)&& !instrucciones.equals("")) {
+            if (!copia_nombre.equals("") && !Main.Recetas().contains(nombre) && !instrucciones.equals("")) {
                 if (ingredientes.size() > 0) {
                     Main.AddReceta(new Receta(nombre, instrucciones, ingredientes));
                 } else {

@@ -26,7 +26,7 @@ public class V_AdminCantidades {
                         "Ingrediente añadido correctamente", "Info Registro", JOptionPane.INFORMATION_MESSAGE);
 
             } else JOptionPane.showMessageDialog(null,
-                        "Cantidad Incorrecto", "Info Cantidad", JOptionPane.ERROR_MESSAGE);
+                    "Cantidad Incorrecto", "Info Cantidad", JOptionPane.ERROR_MESSAGE);
         });
     }
 
