@@ -1,8 +1,9 @@
-package com.ikasgela;
+package com.ikasgela.GUI;
+
+import com.ikasgela.Datos.Ingrediente;
+import com.ikasgela.Main;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class V_AddIngrediente {
     private JTextField name_textField;

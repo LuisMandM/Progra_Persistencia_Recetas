@@ -1,5 +1,9 @@
 package com.ikasgela;
 
+import com.ikasgela.Datos.Config;
+import com.ikasgela.Datos.Ingrediente;
+import com.ikasgela.Datos.Receta;
+import com.ikasgela.GUI.V_Principal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

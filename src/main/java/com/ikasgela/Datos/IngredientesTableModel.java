@@ -1,4 +1,4 @@
-package com.ikasgela;
+package com.ikasgela.Datos;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

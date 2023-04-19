@@ -1,4 +1,8 @@
-package com.ikasgela;
+package com.ikasgela.GUI;
+
+import com.ikasgela.Datos.IngredientesTableModel;
+import com.ikasgela.Main;
+import com.ikasgela.Datos.Receta;
 
 import javax.swing.*;
 
