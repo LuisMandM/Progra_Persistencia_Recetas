@@ -14,7 +14,9 @@
             <preferred-size width="800" height="500"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <dividerLocation value="250"/>
+        </properties>
         <border type="none"/>
         <children>
           <splitpane id="b6b29">
