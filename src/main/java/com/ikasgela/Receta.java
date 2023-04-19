@@ -1,6 +1,7 @@
 package com.ikasgela;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Receta {
     private int id;
@@ -24,6 +25,17 @@ public class Receta {
         this.titulo = titulo;
         this.instrucciones = instrucciones;
         this.ingredientes = ingredientes;
+    }
+
+    public Receta(String titulo, String instrucciones, HashMap<String, String> ingredientes) {
+        this.titulo = titulo;
+        this.instrucciones = instrucciones;
+        this.ingredientes = ingredientes;
+    }
+
+    public Receta(String titulo, String instrucciones) {
+        this.titulo = titulo;
+        this.instrucciones = instrucciones;
     }
 
     public Receta() {
@@ -63,6 +75,19 @@ public class Receta {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receta receta = (Receta) o;
+        return Objects.equals(titulo, receta.titulo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo);
     }
 
     @Override

@@ -56,20 +56,26 @@ public class Main {
             pst.setString(1, receta.getTitulo());
             pst.setString(2, receta.getInstrucciones());
 
+            int filas_modificadas = pst.executeUpdate();
+            if (filas_modificadas > 0) {
+                System.out.println("RECETA ADDED");
+                commit();
+            } else System.out.println("Ha ocurrido un eror intente nuevamente");
+
             for (Map.Entry<String, String> cantidad : receta.getIngredientes().entrySet()) {
-                String squery_cant = "INSERT INTO RECETA_INGREDIENTE VALUES(?,(INSERT INTO RECETA_INGREDIENTE VALUES(?," +
-                        "(SELECT ID_INGREDIENTE FROM INGREDIENTE WHERE NOMBRE = ?),?";
+                String squery_cant = "INSERT INTO RECETA_INGREDIENTE VALUES((SELECT ID_RECETA FROM RECETA WHERE TITULO = ?)," +
+                        "(SELECT ID_INGREDIENTE FROM INGREDIENTE WHERE NOMBRE = ?),?)";
                 PreparedStatement pst_cant = conexion.prepareStatement(squery_cant);
-                pst_cant.setInt(1, receta.getId());
+                pst_cant.setString(1, receta.getTitulo());
                 pst_cant.setString(2, cantidad.getKey());
                 pst_cant.setString(3, cantidad.getValue());
-                int filas_modificadas = pst_cant.executeUpdate();
-                if (filas_modificadas > 0) System.out.println("CANTIDAD ADDED");
+                int cantidades_added = pst_cant.executeUpdate();
+                if (cantidades_added > 0) System.out.println("CANTIDAD ADDED");
                 else System.out.println("Ha ocurrido un eror intente nuevamente");
+                commit();
+                QuestRecetas();
             }
-            int filas_modificadas = pst.executeUpdate();
-            if (filas_modificadas > 0) System.out.println("RECETA ADDED");
-            else System.out.println("Ha ocurrido un eror intente nuevamente");
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -84,8 +90,11 @@ public class Main {
             PreparedStatement pst = conexion.prepareStatement(squery);
             pst.setString(1, ingrediente.getNombre());
             int filas_modificadas = pst.executeUpdate();
-            if (filas_modificadas > 0) System.out.println("Ingrediente añadido");
-            else System.out.println("Ha ocurrido un eror intente nuevamente");
+            if (filas_modificadas > 0) {
+                System.out.println("Ingrediente añadido");
+                commit();
+                QuestIngredientes();
+            } else System.out.println("Ha ocurrido un eror intente nuevamente");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -113,7 +122,7 @@ public class Main {
                     actual.addIngredientes(result_ingredientes.getString("NOMBRE"),
                             result_ingredientes.getString("CANTIDAD"));
                 }
-                recetas.add(actual);
+                if (!recetas.contains(actual.getTitulo())) recetas.add(actual);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -127,7 +136,7 @@ public class Main {
             while (resultSet.next()) {
                 Ingrediente actual = new Ingrediente(resultSet.getString("NOMBRE"),
                         resultSet.getInt("ID_INGREDIENTE"));
-                ingredientes.add(actual);
+                if (!ingredientes.contains(actual)) ingredientes.add(actual);
             }
             if (ingredientes.size() == 0) System.out.println("Sin ingredientes registrados");
 
@@ -164,5 +173,18 @@ public class Main {
         } catch (SQLException e) {
             logger.error(e);
         }
+    }
+
+    public static void commit() throws SQLException {
+        Statement st = conexion.createStatement();
+        st.execute("COMMIT");
+    }
+
+    public static List<Receta> Recetas() {
+        return recetas;
+    }
+
+    public static List<Ingrediente> Ingredientes() {
+        return ingredientes;
     }
 }

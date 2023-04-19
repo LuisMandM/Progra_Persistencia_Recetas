@@ -16,7 +16,7 @@
           <text value="Nombre"/>
         </properties>
       </component>
-      <component id="d44bd" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="d44bd" class="javax.swing.JTextField" binding="nombre_textField">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -32,7 +32,7 @@
           <text value="Instrucciones"/>
         </properties>
       </component>
-      <component id="db5c8" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+      <component id="db5c8" class="javax.swing.JTextPane" binding="instrucc_textPane">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -40,7 +40,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="2b123" class="javax.swing.JButton" binding="añadirIngredientesButton" default-binding="true">
+      <component id="2b123" class="javax.swing.JButton" binding="addIngredientesButton">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

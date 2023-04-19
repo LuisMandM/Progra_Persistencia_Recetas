@@ -27,7 +27,15 @@ public class V_Principal {
 
         });
         verRecetasButton.addActionListener(e -> {
-
+            JFrame frame_Init = new JFrame("Recetas");
+            frame_Init.setContentPane(new V_VerReceta().getPanel());
+            frame_Init.pack();
+            frame_Init.setVisible(true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension screenSize = toolkit.getScreenSize();
+            int x = (screenSize.width - frame_Init.getWidth()) / 2;
+            int y = (screenSize.height - frame_Init.getHeight()) / 2;
+            frame_Init.setLocation(x, y);
         });
         newIngredienteButton.addActionListener(e -> {
             JFrame frame_Init = new JFrame("Nuevo Ingrediente");
@@ -42,7 +50,15 @@ public class V_Principal {
 
         });
         verIngredientesButton.addActionListener(e -> {
-
+            JFrame frame_Init = new JFrame("Ingredientes");
+            frame_Init.setContentPane(new V_VerIngredientes().getPanel());
+            frame_Init.pack();
+            frame_Init.setVisible(true);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Dimension screenSize = toolkit.getScreenSize();
+            int x = (screenSize.width - frame_Init.getWidth()) / 2;
+            int y = (screenSize.height - frame_Init.getHeight()) / 2;
+            frame_Init.setLocation(x, y);
         });
     }
 
